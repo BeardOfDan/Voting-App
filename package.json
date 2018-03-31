@@ -1,0 +1,29 @@
+{
+  "name": "voting-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeardOfDan/Voting-App.git"
+  },
+  "author": "Dan Roberts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BeardOfDan/Voting-App/issues"
+  },
+  "homepage": "https://github.com/BeardOfDan/Voting-App#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.0.12"
+  },
+  "devDependencies": {
+    "dotenv": "^5.0.1",
+    "nodemon": "^1.17.2"
+  }
+}
