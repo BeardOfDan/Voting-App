@@ -35,7 +35,7 @@ export default class Header extends Component {
         return [ // simple hardcoded array, so simple hardcoded keys
           <li><a href="/api/newpoll">New Poll</a></li>,
           <li key="1" style={{ 'margin': '0 10px' }}>
-            <a href="/api/mypolls">Your Polls</a>
+            <a href="/mypolls">My Polls</a>
           </li>,
           <li key="2"><a href="/auth/logout">Logout</a></li>
         ];
