@@ -10,6 +10,8 @@ const KEYS = require('./config/keys');
 
 express.json();
 
+console.log('KEYS.mongoURI ' + KEYS.mongoURI);
+
 mongoose.connect(KEYS.mongoURI);
 
 app.use(

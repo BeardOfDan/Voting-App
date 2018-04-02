@@ -3,7 +3,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Landing from './components/Landing';
 import Header from './components/Header.js';
-import MyPolls from './components/MyPolls.js';
+import MyPolls from './components/MyPolls';
+import NewPoll from './components/NewPoll';
 
 export default class App extends Component {
   render() {
@@ -13,7 +14,8 @@ export default class App extends Component {
           <Header />
           <Route exact path="/" component={Landing} />
           <Route exact path="/mypolls" component={MyPolls} />
-          {/* <Route path="/surveys/new" component={SurveyNew} /> */}
+          <Route exact path="/newpoll" component={NewPoll} />
+          {/* <Route path="/username/poll/' component={Poll}" /> */}
         </div>
       </BrowserRouter>
     );

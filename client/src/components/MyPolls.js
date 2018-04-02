@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import axios from 'axios';
 
-const unAuthenticatedUserMessage = [
-  <Row><h5>You are NOT logged in!</h5></Row>,
-  <Row></Row>, // empty row for formatting
-  <Row>Only authenticated users can have or make a poll.</Row>,
-  <Row>You can vote on an existing poll, but to do anything more, you must login (Click the button in the upper right corner)</Row>
-];
+import unAuthenticatedUserMessage from './../clientConfig/unAuthenticatedUserMessage.js';
+
+console.log('unauthenticateduser: ' + JSON.stringify(unAuthenticatedUserMessage, undefined, 2));
 
 export default class MyPolls extends Component {
   constructor(props) {
@@ -64,7 +61,7 @@ export default class MyPolls extends Component {
       case true:
         return this.state.message.map((poll) => {
           return (
-            <Row><a href={`/poll/${poll.id}`} >{poll.name}</a></Row>
+            <Row><a href={`/poll/${poll.name}`}>{poll.name}</a></Row>
           );
         });
 
