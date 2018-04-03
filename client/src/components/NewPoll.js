@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Grid } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
 import axios from 'axios';
 
 import NewPollForm from './NewPollForm';
@@ -11,7 +11,9 @@ export default class NewPoll extends Component {
     super(props);
 
     this.state = {
-      'loggedIn': null
+      'loggedIn': null,
+      'test': 'default',
+      'submissionStatus': null
     };
   }
 
@@ -36,23 +38,33 @@ export default class NewPoll extends Component {
     });
   }
 
+  submissionHandler(test) {
+    console.log('submissionHandler');
+    this.setState({ test });
+  }
+
   pageContent() {
+    switch (this.state.submissionStatus) {
+      case 'pending':
+        console.log('Pending Submission');
+        break;
+
+      case 'success':
+        console.log('You have successfully made a new poll!');
+        console.log('Here is the link to your new poll');
+        break;
+
+      default: // do nothing, the next switch will handle this case
+    }
+
     switch (this.state.loggedIn) {
       case true: // render a form for the new poll's creation
+
+        const wrapper = []; // oddly only an array will allow me to pass a function to the NewPollForm
+        wrapper.submissionHandler = this.submissionHandler.bind(this);
+
         return (
-          <NewPollForm />
-
-          // <Row><h5>Let's make a new poll!</h5></Row>
-          // form goes here
-          // on submit, a function executes an axios post request with the data to /api/newPoll
-          // When it is submitted, the screen gets a 'pending...' type message
-          // When the response is received, the screen shows a received message
-          // and displays a link to your new poll
-          // OR an error message, if the poll failed to be created
-          // in a .then() after the response is received, it checks the db for the poll
-          // this way it is certain to be correct when it says that it was successfully made
-
-          // And it also asks if you want to make another new poll
+          <NewPollForm wrapper={wrapper} />
         );
 
       case false:

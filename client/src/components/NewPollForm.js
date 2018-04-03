@@ -11,6 +11,9 @@ export default class NewPollForm extends Component {
     };
   }
 
+  addPollName(e) {
+    this.setState({ 'pollName': e.target.value });
+  }
 
   addOption() {
     this.setState({ 'pollOptions': this.state.pollOptions.concat(document.getElementById('newPollOption').value) });
@@ -32,7 +35,7 @@ export default class NewPollForm extends Component {
 
   getOptions() {
     if (this.state.pollOptions.length < 1) {
-      return <span>You haven't added any options yet! Add some in the field below!</span>;
+      return <span> You haven't added any options yet! Add some in the field below!</span>;
     }
 
     if (Array.isArray(this.state.pollOptions)) {
@@ -55,13 +58,29 @@ export default class NewPollForm extends Component {
     }
   }
 
+  handleSubmission(e) {
+    e.preventDefault(); // Will handle this in the parent component
+
+    const pollName = this.state.pollName;
+
+    if ((pollName === '' || pollName === null)) {
+      console.log('Poll Name can\'t be an empty string!');
+      return -1;
+    } else if (this.state.pollOptions.length < 2) {
+      console.log('The poll MUST have a multiplicity of options!');
+      return -2;
+    }
+
+    this.props.wrapper.submissionHandler(this.state.pollName, this.state.pollOptions);
+  }
+
   render() {
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmission.bind(this)}>
         <br />
         <FormGroup>
           <label>Poll Name:</label>
-          <input type="text" autoFocus placeholder="Poll Name" />
+          <input type="text" autoFocus onChange={this.addPollName.bind(this)} placeholder="Poll Name" />
         </FormGroup>
         <FormGroup>
           <label>Current Options:</label>
@@ -82,4 +101,4 @@ export default class NewPollForm extends Component {
       </Form>
     );
   }
-}
+};
