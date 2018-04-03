@@ -4,8 +4,6 @@ import axios from 'axios';
 
 import unAuthenticatedUserMessage from './../clientConfig/unAuthenticatedUserMessage.js';
 
-console.log('unauthenticateduser: ' + JSON.stringify(unAuthenticatedUserMessage, undefined, 2));
-
 export default class MyPolls extends Component {
   constructor(props) {
     super(props);
