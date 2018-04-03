@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Row } from 'react-bootstrap';
+import {Grid } from 'react-bootstrap';
 import axios from 'axios';
+
+import NewPollForm from './NewPollForm';
 
 import unAuthenticatedUserMessage from './../clientConfig/unAuthenticatedUserMessage.js';
 
@@ -38,7 +40,9 @@ export default class NewPoll extends Component {
     switch (this.state.loggedIn) {
       case true: // render a form for the new poll's creation
         return (
-          <Row><h5>Let's make a new poll!</h5></Row>
+          <NewPollForm />
+
+          // <Row><h5>Let's make a new poll!</h5></Row>
           // form goes here
           // on submit, a function executes an axios post request with the data to /api/newPoll
           // When it is submitted, the screen gets a 'pending...' type message

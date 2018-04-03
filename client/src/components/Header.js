@@ -33,7 +33,7 @@ export default class Header extends Component {
         );
       case true:
         return [ // simple hardcoded array, so simple hardcoded keys
-          <li><a href="/newpoll">New Poll</a></li>,
+          <li key="0"><a href="/newpoll">New Poll</a></li>,
           <li key="1" style={{ 'margin': '0 10px' }}>
             <a href="/mypolls">My Polls</a>
           </li>,
